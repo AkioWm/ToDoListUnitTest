@@ -2,7 +2,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.platform.commons.util.StringUtils;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class User {
     private String email;
@@ -18,10 +18,7 @@ public class User {
         this.birthDate = birthDate;
     }
     public boolean isValidPassword(){
-        if (this.password.length() < 8 || this.password.length() > 40){
-            return false;
-        }
-        return true;
+        return this.password.length() >= 8 && this.password.length() <= 40;
     }
     public boolean isValid() {
         return EmailValidator.getInstance().isValid(this.email)
