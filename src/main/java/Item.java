@@ -1,14 +1,15 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import org.junit.platform.commons.util.StringUtils;
 public class Item {
     private String name;
     private String content;
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
 
     public Item(String name, String content) {
         this.name = name;
         this.content = content;
-        this.creationDate = LocalDate.now();
+        this.creationDate = LocalDateTime.now();
     }
 
     public String getName() {
@@ -27,16 +28,19 @@ public class Item {
         this.content = content;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
     public boolean isValid(){
         return this.content.length() < 1000
-                && this.creationDate != null; //Techniquement impossible mais ne sait-on jamais
+                && this.creationDate != null //Techniquement impossible mais ne sait-on jamais
+                && StringUtils.isNotBlank(this.name)
+                && StringUtils.isNotBlank(this.content);
     }
+
 }

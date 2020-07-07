@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class ToDoListService {
@@ -21,9 +22,17 @@ public class ToDoListService {
         }
         return false;
     }
+//    public boolean thirtyMinutesDelay( Item item){
+//        if (listItem.isEmpty()){
+//            return true;
+//        }
+//        Item lastItem = listItem.get(listItem.size()-1);
+//
+//        return Duration.between(item.getCreationDate(), lastItem.getCreationDate()).toMinutes() > 30;
+//    }
     public Item canAddItem(Item item){
-        if (item.isValid() && !nameAlreadyExist(item) )
-            return  item;
+        if (item.isValid() && !nameAlreadyExist(item) && listItem.size() < 11)
+            return item;
         return null;
     }
 
